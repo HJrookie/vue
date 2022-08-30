@@ -78,9 +78,9 @@ function Vue(obj) {
         console.log(4, this, k, v,)
         // computed.push(v)
         Dep.target = {
-            key: k,
-            func: v.bind(this),
-            instance: this
+            key: k, // k 是函数名称
+            func: v.bind(this), // func 就是函数体
+            instance: this  // 之所以传 instance 是为了在 computed 再次执行时,将结果更新到 vue 实例上去
         };
         const result = v.call(this);
         console.log(3333, result)
